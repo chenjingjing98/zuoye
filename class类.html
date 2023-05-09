@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        //  class 类
+        
+      class User{
+        constructor(name){
+            this.name=name;
+            this.show=function(){};
+        }
+        getName(){
+            return this.name
+        }
+      }
+      const zs=new User('张三')
+      console.log(zs);
+       //    js原生方法
+      function fun(name){
+       this.name=name
+       this.show=function(){
+
+       }
+      }
+      fun.prototype.getName=function(){
+         return this.name
+      }
+      let name =new fun('mimi')
+     console.log(name);
+     
+    </script>
+</body>  
+</html>

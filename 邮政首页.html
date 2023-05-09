@@ -1,0 +1,2551 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>邮政首页</title>
+    <link
+      rel="stylesheet"
+      href="./layui-v2.8.2/layui-v2.8.2/layui/css/layui.css"
+    />
+    <script src="./layui.js"></script>
+    <link rel="stylesheet" href="./swiper-8.4.6/swiper/swiper-bundle.min.css" />
+    <script src="./swiper-8.4.6/swiper/swiper-bundle.min.js"></script>
+    <script src="
+    https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js
+    "></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .flex_row_end {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+      }
+      .flex_row_center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .flex_row_center {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .BigBox {
+        width: 100%;
+
+        /*      background-color: rgb(215, 215, 225); */
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+      }
+      .minBox {
+        width: 90%;
+
+        background-color: white;
+      }
+      .BigBox_nav {
+        width: 90%;
+      }
+      .nav_ul {
+        width: 50%;
+        height: 30px;
+      }
+      .nav_ul li {
+        border-right: 1px solid black;
+      }
+      .nav_ul li:last-child {
+        border: none;
+      }
+      .demo-dropdown-on {
+        border: none;
+      }
+      .layui-btn {
+        height: 0px;
+        line-height: 0px;
+        line-height: 7px;
+      }
+      .main_nav {
+        height: 50px;
+      }
+      .img_box {
+        width: 140px;
+        height: 100%;
+      }
+      .img_box img {
+        width: 100%;
+        height: 100%;
+      }
+      .layui-nav {
+        background-color: rgb(238, 238, 238);
+      }
+      .layui-nav .layui-nav-item a {
+        color: black;
+      }
+      .layui-nav .layui-nav-item a:hover {
+        color: black;
+      }
+      .se dd {
+        border-bottom: 1px solid black;
+        background-color: rgb(191, 199, 205);
+      }
+      .se dd:hover {
+        background-color: green;
+      }
+      .main_nav_center {
+        width: 53%;
+        height: 100%;
+        background-color: yellow;
+      }
+      .sou_box {
+        width: 20%;
+        height: 70%;
+        border: 1px solid rgb(191, 185, 185);
+        border-radius: 5px;
+      }
+      .yanse {
+        background-color: white;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+      .layui-nav .layui-this:after,
+      .layui-nav-bar {
+        height: 0px;
+        background-color: white;
+      }
+      .lis {
+        height: 94%;
+        line-height: 50px !important;
+      }
+      .lis :hover {
+        border-bottom: 2px solid green;
+      }
+      .btn {
+        width: 80px;
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+        background-color: green;
+        color: white;
+        margin-right: 6px;
+      }
+      .inputs {
+        height: 28px;
+        border: none;
+        width: 165px;
+        margin-left: 6px;
+
+        text-indent: 8px;
+      }
+      .a_hover:hover {
+        height: 46px;
+        border-bottom: 3px solid green;
+        color: green !important;
+      }
+      .carousel {
+        width: 100%;
+        height: 400px;
+     
+      }
+      /* 轮播图 */
+      html,
+      body {
+        /* position: relative; */
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .swiper-pagination-bullet {
+        width: var(
+          --swiper-pagination-bullet-width,
+          var(--swiper-pagination-bullet-size, 15px)
+        );
+        height: var(
+          --swiper-pagination-bullet-height,
+          var(--swiper-pagination-bullet-size, 15px)
+        );
+      }
+      .imgTu {
+        width: 180px;
+
+        position: absolute;
+        right: 26px;
+        bottom: 26px;
+        z-index: 1;
+        border-radius: 40px;
+      }
+      .imgTu img {
+        width: 180px;
+        height: 108%;
+      }
+      .tu {
+        position: relative;
+      }
+      .menu_box {
+        width: 100%;
+        margin: 20px 0px 20px 0px;
+      }
+      .menu_ul {
+        width: 100%;
+      }
+      .menu_ul li {
+        width: 180px;
+        height: 80px;
+        background-color: white;
+        display: flex;
+        box-shadow: 0px 1px 4px 0px rgb(217, 214, 214);
+        justify-content: center;
+        align-items: center;
+      }
+      .menu_ul li a {
+        font-weight: 1000;
+        font-size: 18px;
+        margin-left: 5px;
+      }
+      .newBox {
+        width: 100%;
+    
+      }
+      .new_top,
+      .new_center,
+      .mapBox {
+        width: 100%;
+      }
+      .new_center,
+      .mapBox {
+        margin: 20px 0px 20px 0px;
+      }
+      .new_top_left
+      {
+        width: 40%;
+        height: 350px;
+ 
+      }
+      .new_center_left{
+    
+        width: 40%;
+        height: 500px;
+      
+      }
+      .new_center_right{
+        width: 58%;
+        height: 500px;
+ 
+      }
+      .new_top_right
+       {
+        width: 58%;
+        height: 350px;
+   
+      }
+      .mapBox_left {
+        width: 74%;
+        height: 800px;
+    
+      }
+      .mapBox_right {
+        width: 25%;
+        height: 800px;
+  
+      }
+      .foot {
+        width: 100%;
+        height: 150px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .foot_nav {
+        width: 50%;
+        height: 60px;
+
+        display: flex;
+        align-items: center;
+      }
+      .foot_nav ul {
+        width: 80%;
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .foot_mian {
+        width: 50%;
+        height: 60px;
+      }
+      .foot_nav ul li {
+        width: 137px;
+        text-align: center;
+        border-right: 1px solid #aca9a9;
+      }
+      .foot_nav h3,
+      .foot_nav ul li a {
+        color: #aca9a9;
+      }
+      .foot_nav ul li:last-child {
+        border: none;
+      }
+      .footBox {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+      hr {
+        width: 100%;
+      }
+      pre {
+        display: flex;
+        justify-content: space-between;
+      }
+      pre p,
+      a {
+        color: black;
+        font-size: 15px;
+      }
+      .liss {
+        width: 120px;
+      }
+
+      .liss span {
+        font-size: 16px;
+      }
+      .rig_new li {
+        list-style-type: disc;
+    list-style-position: inside;
+    
+    margin-left: 10px;
+    color: #beb9b9;
+      }
+      .rig_new_a {
+        font-size: 20px;
+      }
+      #rig_span {
+        text-indent: 17px;
+        display: block;
+        padding: 7px;
+        line-height: 24px;
+        border-bottom: 1px solid black;
+      }
+      .rig_new_ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .rig_new_ul li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 21px 1px 10px 0px;
+        width: 99%;
+        margin-left: 5px;
+      }
+      .rig_new_ul li div{
+        display: flex;
+      }
+      .layui-tab{
+        margin: 0 !important;
+      }
+      .layui-tab-card{
+           border-width: 0px;
+     border-style:none;
+     border-radius: 0px; 
+    box-shadow: 0 0px 0px 0;
+      }
+      .shu{
+        color: #aca9a9;
+      }
+      .layui-tab-title  li:hover{
+           border-bottom: 2px solid seagreen;
+           color: green;
+      }
+      .layui-tab .layui-tab-title li{
+        position: relative;
+    line-height: 40px;
+    min-width: 65px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: center;
+    cursor: pointer;
+    height: 39px;
+      }
+    /* 右边轮播图 */
+    html,
+      body {
+        position: relative;
+        height: 100%;
+      }
+
+      body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+      .ss{
+        width: 100%;
+        height: 90% !important;
+      }
+     
+
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+      }
+
+      .swiper-slide img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .fenyedian{
+        bottom: 10px !important;
+    left: 367px !important;
+    width: 27% !important;
+      }
+      .text{
+        width: 100%;
+    height: 35px;
+    background: #a3a3a2b8;
+      }
+      .fenyedian .swiper-pagination-bullet{
+        width: var( --swiper-pagination-bullet-width, var(--swiper-pagination-bullet-size, 15px) );
+    height: var( --swiper-pagination-bullet-height, var(--swiper-pagination-bullet-size, 4px) );
+      }
+      .mv{
+        width: 100%;
+  
+      }
+   .mvs{
+    background: aliceblue;
+  
+   }
+   .mv_boxHead{
+    width: 100%;
+    height: 40px;
+
+    border-bottom: 1px solid #b1a8a8;
+
+    margin-bottom: 20px;
+   }
+   .mv_foot{
+    width: 100%;
+    height: 150px;
+
+    margin-top: -4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   }
+   .mv_footHaed_ul{
+    width: 100%;
+    height: 82px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+   }
+   .mv_footHaed_ul li{
+    list-style-type: disc;
+    list-style-position: inside;
+    color: #beb9b9;
+    height: 30px;
+    line-height: 30px;
+   }
+   .mv_footHaed{
+    height: 50px;
+    background: #ced1d3;
+   }
+   .mv_footHaed p{
+    font-size: 20px;
+    line-height: 50px;
+   }
+   .lanmu{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   }
+   /* icon图标 */
+   .icons{
+    width: 8px;
+    height: 20px;
+    background-color: green;
+    border-radius:10px ;
+   }
+   .lanmu p, .lanmus p a{
+    font-size: 22px;
+   }
+   .map_haed{
+    width: 100%;
+    height: 60px;
+
+    border-bottom: 1px solid #a69b9b;
+   }
+   .lanmus{
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 60px;
+   }
+  /* 广告自动轮播效果   有问题  */
+   .gonggao{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+   }
+   .dingwei{
+    position: absolute;
+    left: 100px;
+    width: 350px;
+    top: 1594px;
+    height: 30px;
+    /* display: none; */
+   }
+   .dingwei li{
+    height: 30px;
+    line-height: 30px;
+   }
+   .map_cen ul{
+    margin-top: 10px;
+   }
+   .map_cen ul li{
+    width: 100%;
+    height: 38px;
+    line-height: 30px;
+    font-size: 18px;
+    
+   
+   }
+   .map_cen button{
+    width: 90%;
+    height: 50px;
+    background: rgb(24,174,102);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 18px;
+   
+    margin-left: 16px;
+    margin-top: 10px;
+   }
+   .stext{
+    font-size: 22px;
+    font-weight: 1000;
+    color: green;
+   }
+   .weima{
+    width: 98%;
+    height: 298px;
+    background-color: #fff;
+    margin: 19px auto;
+    box-shadow: 4px 5px 20px 0px #9d9595;
+   }
+  .weima ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+ 
+  }
+  .weima ul li{
+    width: 100%;
+    height: 139px;
+    margin: 5px auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .weima ul li div{
+    width: 45%;
+    height: 100%;
+
+  }
+  .weima ul li div img{
+    width: 100%;
+    height: 115px;
+    margin-top: 3px;
+  }
+  .weima ul li div p{
+    text-align: center;
+  }
+  .map_box{
+    width: 100%;
+    height: 589px;
+    background-color:white;
+    margin: auto;
+     box-shadow: 4px 5px 20px 0px #9d9595;
+     border-radius: 5px;
+  }
+  .box22 {
+                width: 600px;
+                height: 400px;
+                border: 1px solid #000;
+                margin: 100px auto;
+            }
+
+    </style>
+  </head>
+  <body>
+    <div class="BigBox"> 
+      <!-- 头 导航 -->
+      <div class="BigBox_nav flex_row_end">
+        <ul class="layui-nav hov">
+          <li class="layui-nav-item">
+            <a href="javascript:;">控股公司及寄递事业部</a>
+            <dl class="layui-nav-child se">
+              <dd><a href="">中国邮政储蓄银行</a></dd>
+              <dd><a href="">中国人寿保险股份有限公司</a></dd>
+              <dd><a href="">中邮证券有限责任公司</a></dd>
+              <dd><a href="">中邮资本管理有限公司</a></dd>
+              <dd><a href="">集团公司寄递事业部</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item">
+            <a href="javascript:;">集团工会及直属单位</a>
+            <dl class="layui-nav-child se">
+              <dd><a href="">菜单ssssss1</a></dd>
+              <dd><a href="">菜sssssssssssssss单2</a></dd>
+              <dd><a href="">菜单3</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item">
+            <a href="javascript:;">各地邮政</a>
+            <dl class="layui-nav-child se">
+              <dd><a href="">选项1</a></dd>
+              <dd class="layui-this"><a href="">选项2</a></dd>
+              <dd><a href="">选项3</a></dd>
+            </dl>
+          </li>
+          <li class="layui-nav-item hover"><a href="">English</a></li>
+        </ul>
+      </div>
+      <div class="minBox">
+        <!-- 内容头部导航 -->
+        <div class="main_nav flex_row_center">
+          <div class="img_box">
+            <img
+              src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/200568120.png"
+              alt=""
+            />
+          </div>
+          <div class="main_nav_center">
+            <ul class="layui-nav yanse">
+              <li class="layui-nav-item layui-this lis">
+                <a href="" class="a_hover">首页</a>
+              </li>
+              <li class="layui-nav-item lis">
+                <a href="javascript:;" class="a_hover">关于我们</a>
+              </li>
+              <li class="layui-nav-item lis">
+                <a href="" class="a_hover">新闻中心</a>
+              </li>
+              <li class="layui-nav-item lis">
+                <a href="" class="a_hover">党建时空</a>
+              </li>
+              <li class="layui-nav-item lis">
+                <a href="" class="a_hover">产品服务</a>
+              </li>
+              <li class="layui-nav-item lis">
+                <a href="" class="a_hover">社会责任</a>
+              </li>
+              <li class="layui-nav-item lis">
+                <a href="" class="a_hover">企业文化</a>
+              </li>
+            </ul>
+          </div>
+          <div class="sou_box flex_row_center">
+            <input type="text" placeholder="输入搜索关键字" class="inputs" />
+            <button class="btn">搜索</button>
+          </div>
+        </div>
+        <!-- 轮播图 -->
+        <div class="carousel">
+          <!-- Swiper -->
+          <div class="swiper mySwiper tu">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  src="http://www.chinapost.com.cn/res/ChinaPostJT/page/23049817.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="http://www.chinapost.com.cn/res/ChinaPostJT/page/23049817.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="http://www.chinapost.com.cn/res/ChinaPostJT/page/23049817.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="http://www.chinapost.com.cn/res/ChinaPostJT/page/22062839.png"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="http://www.chinapost.com.cn/res/ChinaPostJT/page/220574014.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  src="http://www.chinapost.com.cn/res/ChinaPostJT/page/2012680921.jpg"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="imgTu">
+              <img
+                src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/1813129465.png"
+                alt=""
+              />
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+        <!-- 菜单图 -->
+        <div class="menu_box">
+          <ul class="menu_ul flex_row_center">
+            <li>
+              <img
+                src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677353.png"
+                alt=""
+              />
+              <a href="https://www.11185.cn/web/#/index" target="_blank"
+                >邮务业务</a
+              >
+            </li>
+            <li>
+              <img
+                src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677354.png"
+                alt=""
+              />
+              <a href="http://www.ems.com.cn/" target="_blank">快递业务</a>
+            </li>
+            <li>
+              <img
+                src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677355.png"
+                alt=""
+              />
+              <a href="http://www.psbc.com/cn/index.html" target="_blank"
+                >银行业务</a
+              >
+            </li>
+            <li>
+              <img
+                src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677356.png"
+                alt=""
+              />
+              <a href="https://www.chinapost-life.com" target="_blank"
+                >保险业务</a
+              >
+            </li>
+            <li>
+              <img
+                src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677356.png"
+                alt=""
+              />
+              <a href="http://www.cnpsec.com.cn/main/index.html" target="_blank"
+                >证券业务</a
+              >
+            </li>
+            <li>
+              <img
+                src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/2012677358.png"
+                alt=""
+              />
+              <a href="http://www.ule.com/" target="_blank">网上商城</a>
+            </li>
+          </ul>
+        </div>
+        <!-- 新闻大盒子 -->
+        <div class="newBox">
+          <!-- 新闻上盒子 -->
+          <div class="new_top flex_row_center">
+            <!-- 左边轮播 -->
+            <div class="new_top_left">
+                 <!-- Swiper -->
+    <div class="swiper mySwiper ss">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide "><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20230426/16491682485771029.jpg" alt=""></div>
+        <div class="swiper-slide "><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20230506/93511683344867317.jpg" alt=""></div>
+        <div class="swiper-slide "><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20230505/12131683265292583.jpg" alt=""></div>
+        <div class="swiper-slide "><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20230429/30881682711152247.jpg" alt=""></div>
+        <div class="swiper-slide "><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20230428/29891682656289544.jpg" alt=""></div>
+        <div class="swiper-slide "><img src="http://www.chinapostnews.com.cn/newspaper/epaper/res/1/20230425/41221682394662794.jpg" alt=""></div>
+       
+      </div>
+     
+      <div class="swiper-pagination fenyedian"></div>
+    </div>
+    <!-- 有问题   第二个轮播-->
+    <div class="text">jdhdjh</div>
+            </div>
+            <!-- 右边tab切换 -->
+            <div class="new_top_right">
+              <div class="layui-tab layui-tab-card">
+                <ul class="layui-tab-title menu_uls">
+                  <li class="layui-this liss"><span>集团要闻</span></li>
+                  <li class="liss"><span>综合新闻</span></li>
+                  <li class="liss"><span>媒体聚焦</span></li>
+                  <li class="liss"><span>一线风采</span></li>
+                </ul>
+                <div class="layui-tab-content">
+                  <div class="layui-tab-item layui-show">
+                    <ul class="rig_new">
+                      <li>
+                        <a
+                          href="/html1/report/2305/4146-1.htm"
+                          target="_blank"
+                          title="以推动企业高质量发展的新成效检验主题教育成果"
+                          class="rig_new_a"
+                          >以推动企业高质量发展的新成效检验主题教育成果</a
+                        ><br />
+                        <span id="rig_span"
+                          >5月4日，中央主题教育第四十六指导组组长舒印彪一行到北京邮件综合处理中心、中国邮政储蓄银行数据中心亦庄分中心调研，实地察看北京邮件综...</span
+                        >
+                      </li>
+                    </ul>
+                    <ul class="rig_new_ul">
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a
+                            href="/html1/report/2305/2591-1.htm"
+                            target="_blank"
+                            title="在城市寄递市场中突围"
+                            >在城市寄递市场中突围</a
+                          ></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a
+                            href="/html1/report/2305/2584-1.htm"
+                            target="_blank"
+                            title="中国邮政2023年度“烟台—南京”大樱桃专线开通"
+                            >中国邮政2023年度“烟台—南京”大樱桃专线开通</a
+                          >
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a
+                            href="/html1/report/2305/2582-1.htm"
+                            target="_blank"
+                            title="广东邮政探索寄递业务外包集采新路径"
+                            >广东邮政探索寄递业务外包集采新路径</a
+                          ></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a
+                            href="/html1/report/2305/1793-1.htm"
+                            target="_blank"
+                            title="长征路上的新长征"
+                            >长征路上的新长征</a
+                          ></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="layui-tab-item">
+
+                    <ul class="rig_new">
+                      <li>
+                        <a href="/html1/report/2305/1759-1.htm" target="_blank" title="南风吹拂绿意浓" class=" rig_new_a ">南风吹拂绿意浓</a><br />
+                        <span id="rig_span"
+                          >5月4日，中央主题教育第四十六指导组组长舒印彪一行到北京邮件综合处理中心、中国邮政储蓄银行数据中心亦庄分中心调研，实地察看北京邮件综...</span
+                        >
+                      </li>
+                    </ul>
+                    <ul class="rig_new_ul">
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a
+                            href="/html1/report/2305/2591-1.htm"
+                            target="_blank"
+                            title="在城市寄递市场中突围"
+                            >在城市寄递市场中突围</a
+                          ></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a
+                            href="/html1/report/2305/2584-1.htm"
+                            target="_blank"
+                            title="中国邮政2023年度“烟台—南京”大樱桃专线开通"
+                            >中国邮政2023年度“烟台—南京”大樱桃专线开通</a
+                          >
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a
+                            href="/html1/report/2305/2582-1.htm"
+                            target="_blank"
+                            title="广东邮政探索寄递业务外包集采新路径"
+                            >广东邮政探索寄递业务外包集采新路径</a
+                          ></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a
+                            href="/html1/report/2305/1793-1.htm"
+                            target="_blank"
+                            title="长征路上的新长征"
+                            >长征路上的新长征</a
+                          ></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="layui-tab-item">
+                    <ul class="rig_new">
+                      <li>
+                        <a href="/html1/report/2305/918-1.htm" target="_blank" title="<font color=red>人民日报：</font>邮路绵延 山乡巨变" class="rig_new_a">邮路绵延 山乡巨变</a><br />
+                        <span id="rig_span"
+                          >5月4日，中央主题教育第四十六指导组组长舒印彪一行到北京邮件综合处理中心、中国邮政储蓄银行数据中心亦庄分中心调研，实地察看北京邮件综...</span
+                        >
+                      </li>
+                    </ul>
+                    <ul class="rig_new_ul">
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/report/23041/4783-1.htm" target="_blank" title="<font color=red>三秦都市报：</font>全国首个劳模工匠主题邮局开业"><font color="red">三秦都市报：</font>全国首个劳模工匠主题邮局开业...</a></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/report/2305/897-1.htm" target="_blank" title="<font color=red>人民网：</font>李松：“要让邮政快递成为老百姓寄递的最佳选择”"><font color="red">人民网：</font>李松：“要让邮政快递成为老百姓寄递的最佳选择”...</a>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                        <a href="/html1/report/2305/879-1.htm" target="_blank" title="<font color=red>经济日报：</font>中国邮政贵州龙里分公司邮递员莫富元——一心坚守风雨邮路"><font color="red">经济日报：</font>中国邮政贵州龙里分公司邮递员莫富元——一心坚守风雨...</a></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/report/2305/869-1.htm" target="_blank" title="<font color=red>北青网：</font>流动邮局亮相奥体中心区服务五一假期"><font color="red">北青网：</font>流动邮局亮相奥体中心区服务五一假期...</a></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="layui-tab-item">
+                    <ul class="rig_new">
+                      <li>
+                        <a
+                          href="/html1/report/2305/4146-1.htm"
+                          target="_blank"
+                          title="以推动企业高质量发展的新成效检验主题教育成果"
+                          class="rig_new_a"
+                          >以推动企业高质量发展的新成效检验主题教育成果</a
+                        ><br />
+                        <span id="rig_span"
+                          >5月4日，中央主题教育第四十六指导组组长舒印彪一行到北京邮件综合处理中心、中国邮政储蓄银行数据中心亦庄分中心调研，实地察看北京邮件综...</span
+                        >
+                      </li>
+                    </ul>
+                    <ul class="rig_new_ul">
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a
+                            href="/html1/report/2305/2591-1.htm"
+                            target="_blank"
+                            title="在城市寄递市场中突围"
+                            >在城市寄递市场中突围</a
+                          ></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a
+                            href="/html1/report/2305/2584-1.htm"
+                            target="_blank"
+                            title="中国邮政2023年度“烟台—南京”大樱桃专线开通"
+                            >中国邮政2023年度“烟台—南京”大樱桃专线开通</a
+                          >
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a
+                            href="/html1/report/2305/2582-1.htm"
+                            target="_blank"
+                            title="广东邮政探索寄递业务外包集采新路径"
+                            >广东邮政探索寄递业务外包集采新路径</a
+                          ></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a
+                            href="/html1/report/2305/1793-1.htm"
+                            target="_blank"
+                            title="长征路上的新长征"
+                            >长征路上的新长征</a
+                          ></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 新闻中间盒子 -->
+          <div class="new_center flex_row_center">
+            <!-- 左边视频播放 -->
+            <div class="new_center_left">
+              <div class="mv_boxHead">
+                <div class="lanmu">
+                  <div class="icons"></div>
+                   <p>邮政视频</p>
+                </div>
+                 
+              </div>
+              <div class="mv">
+                <video width="100%" height="100%"    controls class="mvs">
+                  <source src="http://v.ctvpost.com/res/ChinaPostVideo/video/23041/2020_2.mp4" type="video/mp4" >
+                  <source src="movie.ogg" type="video/ogg">
+             
+                </video>
+              </div>
+               <div class="mv_foot">
+                      <div class="mv_footHaed">
+                        <p>《邮政视频联播》2023年第15期</p>
+                      </div>
+                      <ul class="mv_footHaed_ul">
+                        <li><span style="color: #000;"><a href="/html1/page/20071/2617-1.htm" target="_blank" title="强邮争先锋 建功新时代" style="color: #000;">强邮争先锋 建功新时代</a></span></li>
+                        <li><span style="color: #000;"><a href="/html1/page/20071/2617-1.htm" target="_blank" title="强邮争先锋 建功新时代" style="color: #000;">强邮争先锋 建功新时代</a></span></li>
+                      </ul>
+               </div>
+            </div>
+            <!-- 右边tab切换 -->
+            <div class="new_center_right">
+              <div class="layui-tab layui-tab-card">
+                <ul class="layui-tab-title menu_uls">
+                  <li class="layui-this liss"><span>信息公告</span></li>
+                  <li class="liss"><span>邮资票品发行信息</span></li>
+                  <li class="liss"><span>采购公告公示</span></li>
+                  <li class="liss"><span>预决赛公开</span></li>
+                </ul>
+                <div class="layui-tab-content">
+                  <div class="layui-tab-item layui-show">
+                  
+                    <ul class="rig_new_ul">
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/report/2303/256-1.htm" target="_blank" title="中国邮政集团有限公司任免通知">中国邮政集团有限公司任免通知</a></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/report/2303/256-1.htm" target="_blank" title="中国邮政集团有限公司任免通知">中国邮政集团有限公司任免通知</a></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/report/23041/4414-1.htm" target="_blank" title="中国邮政集团有限公司关于公开征集《甲辰年》特种邮票图稿的公告">中国邮政集团有限公司关于公开征集《甲辰年》特种邮票...</a>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/report/2303/253-1.htm" target="_blank" title="中国共产党中国邮政集团有限公司党组任免通知">中国共产党中国邮政集团有限公司党组任免通知</a></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/report/2303/253-1.htm" target="_blank" title="中国共产党中国邮政集团有限公司党组任免通知">中国共产党中国邮政集团有限公司党组任免通知</a></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/report/2303/253-1.htm" target="_blank" title="中国共产党中国邮政集团有限公司党组任免通知">中国共产党中国邮政集团有限公司党组任免通知</a></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/report/23041/4414-1.htm" target="_blank" title="中国邮政集团有限公司关于公开征集《甲辰年》特种邮票图稿的公告">中国邮政集团有限公司关于公开征集《甲辰年》特种邮票...</a>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/report/23021/8559-1.htm" target="_blank" title="中国邮政集团有限公司任免通知">中国邮政集团有限公司任免通知</a></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="layui-tab-item">
+                    <ul class="rig_new_ul">
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/2305/1847-1.htm" target="_blank" title="《中西建交五十周年》纪念邮票">《中西建交五十周年》纪念邮票</a></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/23041/2309-1.htm" target="_blank" title="《中国古典文学名著——〈西游记〉（五）》特种邮票">《中国古典文学名著——〈西游记〉（五）》特种邮票</a>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/stamp/2304/8561-1.htm" target="_blank" title="《昆明2023第19届中华全国集邮展览》纪念邮资明信片">《昆明2023第19届中华全国集邮展览》纪念邮资明信片...</a></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/stamp/2304/3742-1.htm" target="_blank" title="《云南大学建校一百周年》纪念邮票">《云南大学建校一百周年》纪念邮票</a></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/stamp/2304/3742-1.htm" target="_blank" title="《云南大学建校一百周年》纪念邮票">《云南大学建校一百周年》纪念邮票</a></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/2305/1847-1.htm" target="_blank" title="《中西建交五十周年》纪念邮票">《中西建交五十周年》纪念邮票</a></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/23041/2309-1.htm" target="_blank" title="《中国古典文学名著——〈西游记〉（五）》特种邮票">《中国古典文学名著——〈西游记〉（五）》特种邮票</a>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/23041/2309-1.htm" target="_blank" title="《中国古典文学名著——〈西游记〉（五）》特种邮票">《中国古典文学名著——〈西游记〉（五）》特种邮票</a>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="layui-tab-item">
+                   
+                    <ul class="rig_new_ul">
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/2304/3734-1.htm" target="_blank" title="《东北大学建校一百周年》纪念邮票">《东北大学建校一百周年》纪念邮票</a></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <span id="StampIDsubject"><a href="/html1/stamp/23031/149-1.htm" target="_blank" title="《中央广播电视总台成立5周年》纪念邮资信封">《中央广播电视总台成立5周年》纪念邮资信封</a></span>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                        <a href="/html1/stamp/23022/1231-1.htm" target="_blank" title="《中华人民共和国第十四届全国人民代表大会》纪念邮票">《中华人民共和国第十四届全国人民代表大会》纪念邮票</a></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/report/2305/869-1.htm" target="_blank" title="<font color=red>北青网：</font>流动邮局亮相奥体中心区服务五一假期"><font color="red">北青网：</font>流动邮局亮相奥体中心区服务五一假期...</a></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/report/2305/869-1.htm" target="_blank" title="<font color=red>北青网：</font>流动邮局亮相奥体中心区服务五一假期"><font color="red">北青网：</font>流动邮局亮相奥体中心区服务五一假期...</a></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <span id="StampIDsubject"><a href="/html1/stamp/23031/149-1.htm" target="_blank" title="《中央广播电视总台成立5周年》纪念邮资信封">《中央广播电视总台成立5周年》纪念邮资信封</a></span>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/2304/3734-1.htm" target="_blank" title="《东北大学建校一百周年》纪念邮票">《东北大学建校一百周年》纪念邮票</a></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <span id="StampIDsubject"><a href="/html1/stamp/23031/149-1.htm" target="_blank" title="《中央广播电视总台成立5周年》纪念邮资信封">《中央广播电视总台成立5周年》纪念邮资信封</a></span>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="layui-tab-item">
+                    
+                    <ul class="rig_new_ul">
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a
+                            href="/html1/report/2305/2591-1.htm"
+                            target="_blank"
+                            title="在城市寄递市场中突围"
+                            >在城市寄递市场中突围</a
+                          ></span
+                        >
+                        </div>
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a
+                            href="/html1/report/2305/2584-1.htm"
+                            target="_blank"
+                            title="中国邮政2023年度“烟台—南京”大樱桃专线开通"
+                            >中国邮政2023年度“烟台—南京”大樱桃专线开通</a
+                          >
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a
+                            href="/html1/report/2305/2582-1.htm"
+                            target="_blank"
+                            title="广东邮政探索寄递业务外包集采新路径"
+                            >广东邮政探索寄递业务外包集采新路径</a
+                          ></span
+                        >
+                        </div>
+                       
+                        <span class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a
+                            href="/html1/report/2305/1793-1.htm"
+                            target="_blank"
+                            title="长征路上的新长征"
+                            >长征路上的新长征</a
+                          ></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span
+                          ><a href="/html1/stamp/2304/3742-1.htm" target="_blank" title="《云南大学建校一百周年》纪念邮票">《云南大学建校一百周年》纪念邮票</a></span
+                        >
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/2305/1847-1.htm" target="_blank" title="《中西建交五十周年》纪念邮票">《中西建交五十周年》纪念邮票</a></span
+                        >
+                        </div>
+                      
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/23041/2309-1.htm" target="_blank" title="《中国古典文学名著——〈西游记〉（五）》特种邮票">《中国古典文学名著——〈西游记〉（五）》特种邮票</a>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      <li>
+                        <div>
+                          <svg
+                          t="1683593890169"
+                          class="icon"
+                          viewBox="0 0 1024 1024"
+                          version="1.1"
+                          xmlns="http://www.w3.org/2000/svg"
+                          p-id="2368"
+                          width="20"
+                          height="20"
+                        >
+                          <path
+                            d="M512 512m-80 0a80 80 0 1 0 160 0 80 80 0 1 0-160 0Z"
+                            fill="#D8D8D8"
+                            p-id="2369"
+                          ></path>
+                        </svg>
+                        <span>
+                          <a href="/html1/stamp/23041/2309-1.htm" target="_blank" title="《中国古典文学名著——〈西游记〉（五）》特种邮票">《中国古典文学名著——〈西游记〉（五）》特种邮票</a>
+                        </span>
+                        </div>
+                       
+                        <span  class="shu">2023-05-09</span>
+                      </li>
+                      
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 地图盒子 -->
+          <div class="mapBox flex_row_center">
+            <!-- 左边地图 -->
+            <div class="mapBox_left">
+                <div class="map_haed">
+                  <div class="lanmus">
+                    <div class="icons"></div>
+                     <p><a href="/html1/folder/181312/9531-1.htm">邮政网点</a></p>
+                  </div>
+                </div>
+            
+                <!-- 广告自动轮播效果   有问题 -->
+                <div class="gonggao">
+                   <div class="gonggao_left">
+                       <div class="xiaoxi_box">
+                        <svg t="1683615448088" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2423" width="20" height="20"><path d="M888.514259 742.334969 888.514259 742.334969c-12.409634 12.409634-32.715099 12.409634-45.124733 0l-90.248444-90.248444c-12.409634-12.409634-12.409634-32.715099 0-45.124733l0 0c12.409634-12.409634 32.715099-12.409634 45.124733 0l90.249467 90.248444C900.92287 709.61987 900.92287 729.925335 888.514259 742.334969zM935.280376 481.368352 935.280376 481.368352c0 17.549701-14.358009 31.907711-31.907711 31.907711L775.741823 513.276063c-17.549701 0-31.907711-14.358009-31.907711-31.907711l0 0c0-17.549701 14.358009-31.907711 31.907711-31.907711l127.630842 0C920.922367 449.460642 935.280376 463.818651 935.280376 481.368352zM753.141082 373.944737 753.141082 373.944737c12.409634 12.409634 32.715099 12.409634 45.124733 0l90.249467-90.248444c12.409634-12.409634 12.409634-32.715099 0-45.124733l0 0c-12.409634-12.409634-32.715099-12.409634-45.124733 0l-90.248444 90.248444C740.731448 341.229638 740.731448 361.535103 753.141082 373.944737zM623.036909 951.717743c-11.110035 0-22.583344-4.448312-32.720216-13.024641l-246.657726-208.682833c-13.453407-11.382235-15.132652-31.515784-3.750417-44.968168 11.382235-13.452383 31.515784-15.132652 44.968168-3.750417l216.285998 182.987614L601.162716 160.03281 407.043576 325.567937c-17.97335 15.326057-48.161906 26.450419-71.78186 26.450419L152.535045 352.018356l0 321.972039 87.490633 0c17.622356 0 31.907711 14.285355 31.907711 31.907711s-14.285355 31.907711-31.907711 31.907711l-90.391706 0c-33.589003 0-60.915371-27.325345-60.915371-60.914348L88.718601 349.117282c0-33.589003 27.326369-60.915371 60.915371-60.915371l185.626721 0c8.382924 0 23.99653-5.753027 30.375821-11.1919L590.295204 85.432765c15.430434-13.155624 33.994232-16.695241 49.662073-9.464559 15.666818 7.230682 25.02086 23.652699 25.02086 43.929512L664.978137 904.063397c0 20.249183-9.340739 36.671201-24.987091 43.928488C634.604362 950.489776 628.870778 951.717743 623.036909 951.717743z" fill="#272636" p-id="2424"></path></svg>
+                        
+                      </div>
+                      <div class="dingwei">
+                        <div class="swiper mySwiper123">
+                          <div class="swiper-wrapper">
+                            <div class="swiper-slide">Slide 1</div>
+                            <div class="swiper-slide">Slide 2</div>
+                            <div class="swiper-slide">Slide 3</div>
+                            <div class="swiper-slide">Slide 4</div>
+                            <div class="swiper-slide">Slide 5</div>
+                            <div class="swiper-slide">Slide 6</div>
+                            <div class="swiper-slide">Slide 7</div>
+                            <div class="swiper-slide">Slide 8</div>
+                            <div class="swiper-slide">Slide 9</div>
+                          </div>
+                          <div class="swiper-pagination"></div>
+                        </div>
+                      </div>
+                   </div>
+                   <div class="gengduo">
+                    <span>查看更多</span>
+                   </div>
+                </div>
+                <div class="map_box">
+                  <div id="china" style="height: 500px;"></div>
+
+                </div>
+
+            </div>
+            <!-- 右边二维码图 -->
+            <div class="mapBox_right">
+              <div class="map_haed">
+                <div class="lanmus ">
+                  <div class="icons"></div>
+                   <p><a href="#">客服热线</a> </p>
+                </div>
+              </div>
+              <div class="map_cen">
+                <ul >
+                  <li>
+                    <span>邮政业务</span>
+                    <span class="stext">11185</span>
+                  </li>
+                  <li>
+                    <span>邮储银行</span>
+                    <span class="stext">95580</span>
+                     
+                  </li>
+                  <li>
+                    <span>速递物流</span>
+                    <span class="stext">11183</span>
+                  </li>
+                  <li>
+                    <span>中邮保险</span>
+                    <span class="stext">4008909999</span>
+                  </li>
+                  <li>
+                    <span>中邮证券</span>
+                    <span class="stext">4008909999</span>
+                  </li>
+                  
+                </ul>
+                
+                  <button>举报专区</button>
+                
+              </div>
+              <div class="map_xia">
+                <div class="map_haed" >
+                  <div class="lanmus  "style="    width: 123px;">
+                    <div class="icons"></div>
+                     <p><a href="#">邮政新媒体</a> </p>
+                  </div>
+                </div>
+                <div class="weima">
+                  <ul>
+                    <li>
+                        <div>
+                          <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/1813129448.jpg" alt="">
+                        <p>中国邮政微信订阅号</p>
+                        </div>
+                        <div>
+                          <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/1813129448.jpg" alt="">
+                          <p>中国邮政微信订阅号</p>
+                        </div>
+                    </li>
+                    <li>
+                      <div>
+                        <img src="http://www.chinapost.com.cn/res/ChinaPostJT/structure/1813129448.jpg" alt="">
+                        <p>中国邮政微信订阅号</p>
+                      </div>
+                      <div></div>
+                    </li>
+                    
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 底部大盒子 -->
+        <div class="foot">
+          <div class="footBox">
+            <div class="foot_nav">
+              <h3>友情连接:</h3>
+              <ul>
+                <li>
+                  <a href="http://www.gov.cn/" target="_blank">中国政府网</a>
+                </li>
+                <li>
+                  <a href="http://www.mof.gov.cn/" target="_blank">财政部</a>
+                </li>
+                <li>
+                  <a href="http://www.mot.gov.cn/" target="_blank"
+                    >交通运输部</a
+                  >
+                </li>
+                <li>
+                  <a href="http://www.spb.gov.cn/" target="_blank"
+                    >国家邮政局</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <hr />
+          <div class="foot_mian">
+            <pre>
+                <p>中国邮政集团有限公司版权所有</p>
+                <a href="http://beian.miit.gov.cn" target="_blank">京ICP备15035540号</a>
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=110401400185" target="_blank">京公网安备110401400185</a>
+                <a href="/html1/folder/181428/8737-1.htm">联系我们</a>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- js -->
+    <!-- <script src="/static/js/echarts.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+       let text =document.querySelector('.text')
+  // 基于准备好的dom，初始化echarts实例
+  
+  var myEcharts = echarts.init(document.getElementById("china"));
+        var option = {
+            title: {  //标题样式
+                text: '中国地图',
+                x: "center",
+                textStyle: {
+                    fontSize: 18,
+                    color: "black"
+                },
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: function (params) {
+                    console.log(params)
+                    if (params.name) {
+                        return params.name + ' : ' + (isNaN(params.value) ? 0 : parseInt(params.value));
+                    }
+                }
+            },
+            visualMap: {//视觉映射组件
+                top: 'bottom',
+                left: 'left',
+                min: 10,
+                max: 500000,
+                //text: ['High', 'Low'],
+                realtime: false,  //拖拽时，是否实时更新
+                calculable: true,  //是否显示拖拽用的手柄
+                inRange: {
+                    color: ['lightskyblue', 'yellow', 'orangered']
+                }
+            },
+            series: [
+                {
+                    name: '模拟数据',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,//是否开启鼠标缩放和平移漫游
+                    itemStyle: {//地图区域的多边形 图形样式
+                        normal: {//是图形在默认状态下的样式
+                            label: {
+                                show: true,//是否显示标签
+                                textStyle: {
+                                    color: "black"
+                                }
+                            }
+                        },
+                        zoom: 1.5,  //地图缩放比例,默认为1
+                        emphasis: {//是图形在高亮状态下的样式,比如在鼠标悬浮或者图例联动高亮时
+                            label: {show: true}
+                        }
+                    },
+                    top: "3%",//组件距离容器的距离
+                    data: [
+                        {name: '北京', value: 350000},
+                        {name: '天津', value: 120000},
+                        {name: '上海', value: 300000},
+                        {name: '重庆', value: 92000},
+                        {name: '河北', value: 25000},
+                        {name: '河南', value: 20000},
+                        {name: '云南', value: 500},
+                        {name: '辽宁', value: 3050},
+                        {name: '黑龙江', value: 80000},
+                        {name: '湖南', value: 2000},
+                        {name: '安徽', value: 24580},
+                        {name: '山东', value: 40629},
+                        {name: '新疆', value: 36981},
+                        {name: '江苏', value: 13569},
+                        {name: '浙江', value: 24956},
+                        {name: '江西', value: 15194},
+                        {name: '湖北', value: 41398},
+                        {name: '广西', value: 41150},
+                        {name: '甘肃', value: 17630},
+                        {name: '山西', value: 27370},
+                        {name: '内蒙古', value: 27370},
+                        {name: '陕西', value: 97208},
+                        {name: '吉林', value: 88290},
+                        {name: '福建', value: 19978},
+                        {name: '贵州', value: 94485},
+                        {name: '广东', value: 89426},
+                        {name: '青海', value: 35484},
+                        {name: '西藏', value: 97413},
+                        {name: '四川', value: 54161},
+                        {name: '宁夏', value: 56515},
+                        {name: '海南', value: 54871},
+                        {name: '台湾', value: 48544},
+                        {name: '香港', value: 49474},
+                        {name: '澳门', value: 34594}
+                    ]
+                }
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myEcharts.setOption(option);
+
+        var swiper = new Swiper(".mySwiper123", {
+        direction: "vertical",
+        autoplay : true, //自动切换
+        loop : true, //环路，让Swiper看起来是循环的
+      });
+
+
+   </script>
+  </body>
+</html>
